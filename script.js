@@ -57,29 +57,44 @@ function getWeather(city) {
     var iconURL = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
 
     // date display //
-    var date = new Date(response.dt*1000).toLocaleDateString();
-    currentCity.html(response.name + " (" + date + ")" + "<img src=" + iconURL + ">");
+    var date = new Date(response.dt * 1000).toLocaleDateString();
+    currentCity.html(
+      response.name + " (" + date + ")" + "<img src=" + iconURL + ">"
+    );
 
     // temperature //
-    currentTemp.html(" " + response.main.temp + " °F");
+    currentTemp.html(response.main.temp + " °F");
 
     // humidity //
-    currentHumidity.html(" " + response.main.humidity + "%");
+    currentHumidity.html(response.main.humidity + "%");
 
     // wind speed//
+    currentWindSpeed.html(response.wind.speed + " MPH");
 
-    currentWindSpeed.html(" " + response.wind.speed + " MPH");
+    // UV Index //
+    showUVIndex(response.coord.lon, response.coord.lat);
+  });
+}
 
+// Function for UVIndex response //
 
+function showUVIndex(ln, lt) {
+  // UVIndex URL
+  var uVIndexURL =
+    "https://api.openweathermap.org/data/2.5/uvi?appid=" +
+    APIKey +
+    "&lat=" +
+    lt +
+    "&lon=" +
+    ln;
 
-
-
-
-
-
-
-
-
+  // AJAX call
+  $.ajax({
+    url: uVIndexURL,
+    method: "GET",
+  }).then(function (response) {
+    currentUVIndex.html(" " + response.value);
+    currentUVIndex.css( "background", "#C20C0C").css('color', 'white').css('padding', '5px').css('border-radius', '4px');
   });
 }
 
