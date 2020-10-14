@@ -15,6 +15,18 @@ h1 {
 
 }
 
-#forecast-weather {
+#forecast-weather,
+#current-weather {
     margin-top: 15px;
 }
+
+h3 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+h4, p {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
