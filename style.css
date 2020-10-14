@@ -5,3 +5,16 @@
 h1 {
     color: white;
 }
+
+.forecast-box {
+    background-color: #007bff;
+    color: white;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+
+}
+
+#forecast-weather {
+    margin-top: 15px;
+}
